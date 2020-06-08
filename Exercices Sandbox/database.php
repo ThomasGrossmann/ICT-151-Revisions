@@ -12,6 +12,13 @@ function getPDO()
     return $dbh;
 }
 
+/**
+ * Selects one or many records
+ * @param $query : the SQL query with (optional) PDO named parameters
+ * @param $params : an associative array of key => value pairs with parameters values
+ * @param $multirecord
+ * @return array|mixed|null
+ */
 function select($query, $params, $multirecord)
 {
     require ".const.php";
@@ -28,6 +35,7 @@ function select($query, $params, $multirecord)
             $queryResult = $statement->fetch(PDO::FETCH_ASSOC);
         }
         $dbh = null;
+        if ($debug) var_dump($queryResult);
         return $queryResult;
     } catch (PDOException $e)
     {
@@ -36,16 +44,21 @@ function select($query, $params, $multirecord)
     }
 }
 
-function selectMany($query, $params)
-{
-    return select($query, $params, true);
-}
-
 function selectOne($query, $params)
 {
     return select($query, $params, false);
 }
 
+function selectMany($query, $params)
+{
+    return select($query, $params, true);
+}
+
+/**
+ * @param $query : the SQL query with (optional) PDO named parameters
+ * @param $params : an associative array of key => value pairs with parameters values
+ * @return int |null : the id of the record that was created
+ */
 function insert($query, $params)
 {
     require ".const.php";
@@ -58,6 +71,31 @@ function insert($query, $params)
     } catch (PDOException $e)
     {
         print "Error!: " . $e->getMessage() . "<br/>";
+        $_SESSION['flashmessage'] = "Erreur lors de l'enregistrement";
+        return null;
+    }
+}
+
+/**
+ * Executes a Delete or Update query
+ * @param $query : the SQL query with (optional) PDO named parameters
+ * @param $params : an associative array of key => value pairs with parameters values
+ * @return bool|null
+ */
+function execute($query, $params)
+{
+    require ".const.php";
+    $dbh = getPDO();
+    try
+    {
+        $statement = $dbh->prepare($query);//prepare query
+        $statement->execute($params);//execute query
+        $dbh = null;
+        return true;
+    } catch (PDOException $e)
+    {
+        print "Error!: " . $e->getMessage() . "<br/>";
+        $_SESSION['flashmessage'] = "Erreur lors de l'enregistrement";
         return null;
     }
 }
