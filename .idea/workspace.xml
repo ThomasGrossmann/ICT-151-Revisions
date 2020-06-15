@@ -20,7 +20,7 @@
   <component name="ProjectId" id="1d1xVAwVKoHWyhm4cO1lL9Y3rW8" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CSUNVB" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Exo1" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunDashboard">
@@ -36,7 +36,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Unnamed" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" nameIsGenerated="true" document_root="$PROJECT_DIR$/Exercices Sandbox" port="8080">
+    <configuration name="Unnamed" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" nameIsGenerated="true" document_root="$PROJECT_DIR$/Exo1" port="8080">
       <method v="2" />
     </configuration>
   </component>
@@ -51,7 +51,7 @@
       <option name="presentableId" value="Default" />
       <updated>1591606421246</updated>
       <workItem from="1591606422314" duration="4989000" />
-      <workItem from="1592220740367" duration="1616000" />
+      <workItem from="1592220740367" duration="1791000" />
     </task>
     <servers />
   </component>
