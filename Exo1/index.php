@@ -11,12 +11,7 @@ if (isset($_POST['btnInsert'])) {
     $evaluation = $_POST['evaluation'];
     $eleve = $_POST['eleve'];
     $note = $_POST['note'];
-    $nouvelleNote = insert("Insert into grade (gradeValue,fkStudent,fkEval) values (:grade,:student,:eval)",
-        [
-            "grade" => $note,
-            "student" => $eleve,
-            "eval" => $evaluation
-        ]);
+    $nouvelleNote = insert("Insert into grade (gradeValue,fkStudent,fkEval) values (:grade,:student,:eval)", ["grade" => $note, "student" => $eleve, "eval" => $evaluation]);
 }
 
 $allEleves = selectMany("SELECT * FROM person WHERE role = 0 ORDER by personLastName", []);
